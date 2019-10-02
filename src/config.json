@@ -1,0 +1,22 @@
+{
+  "default_url": "https://reqres.in/api",
+  "services": [
+    "users",
+    "unknown",
+    "register",
+    "login"
+  ],
+  "methods": [
+    "get",
+    "post",
+    "put",
+    "patch",
+    "delete"
+  ],
+  "user_params": [
+    "name",
+    "job",
+    "email",
+    "password"
+  ]
+}
