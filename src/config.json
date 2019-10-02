@@ -1,32 +1,22 @@
 {
-  "endpoint_list": {
-    "basic_url": "https://reqres.in/api",
-    "user_list": "/users",
-    "resource_list": "/unknown",
-    "register": "/register",
-    "login": "/login",
-    "delay": "?delay=3"
-  },
-  "method_list": [
+  "default_url": "https://reqres.in/api",
+  "services": [
+    "users",
+    "unknown",
+    "register",
+    "login"
+  ],
+  "methods": [
     "get",
     "post",
     "put",
     "patch",
     "delete"
   ],
-  "user_param_list": [
+  "user_params": [
     "name",
     "job",
     "email",
     "password"
-  ],
-  "stats": [
-    "https://python-scripts.com/json"
-  ],
-  "stop_list": [
-    "stop",
-    "exit",
-    "0",
-    "break"
   ]
 }
