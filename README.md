@@ -8,6 +8,7 @@ error_constructor
 counter
 response_constructor
 sender
+dict_constructor
 
 endpoint_constructor
 1. какой сервис?
@@ -38,11 +39,13 @@ response_body
 
 response_constructor
 1. последовательное преобразование словаря sender в читаемый красивый вид
-на выходе: 
+на выходе: ответы на отправленные запросы
 
 error_constructor
 на выходе: обрабатывает ошибку и выводит на экран
 
+dict_constructor
+на выходе: абстрактный словарь
 
 
 Модули:
