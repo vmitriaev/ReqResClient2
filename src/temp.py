@@ -1,3 +1,8 @@
+default_url = 'https://reqres.in/api/'
+
+choose_error = 'На вход принимаются только целые числа! Введенное значение: '
+
+
 def error_constructor(message):
     '''Вывод сообщения об ошибке'''
     errorMessage = ('ERROR: ' + message)
@@ -38,10 +43,6 @@ def unknown_get_param_switcher(unknown_get_param_value):
         '2': 'resource_single'
     }.get(unknown_get_param_value, error_constructor(choose_error + unknown_get_param_value.upper()))
 
-
-default_url = 'https://reqres.in/api/'
-
-choose_error = 'На вход принимаются только целые числа! Введенное значение: '
 
 question_service = input(
     'Список сервисов:' + '\n' * 2 + '1. users' + '\n' + '2. unknown' + '\n' + '3. register' + '\n' + '4. login' + '\n' * 2 + 'К какому сервису запрос? Номер: ')
