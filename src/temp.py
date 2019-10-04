@@ -1,3 +1,5 @@
+import requests, json
+
 default_url = 'https://reqres.in/api/'
 
 choose_error = 'На вход принимаются только целые числа! Введенное значение: '
@@ -44,5 +46,20 @@ def unknown_get_param_switcher(unknown_get_param_value):
     }.get(unknown_get_param_value, error_constructor(choose_error + unknown_get_param_value.upper()))
 
 
-question_service = input(
-    'Список сервисов:' + '\n' * 2 + '1. users' + '\n' + '2. unknown' + '\n' + '3. register' + '\n' + '4. login' + '\n' * 2 + 'К какому сервису запрос? Номер: ')
+# question_service = input(
+#     'Список сервисов:' + '\n' * 2 + '1. users' + '\n' + '2. unknown' + '\n' + '3. register' + '\n' + '4. login' + '\n' * 2 + 'К какому сервису запрос? Номер: ')
+
+mass = ['get', 'https://reqres.in/api/users/2', None]
+
+
+def request_constructor(method, endpoint, body):
+    if method == 'get':
+        request = requests.get(url=endpoint, data=body)
+        return request
+
+
+request_data = request_constructor(mass[0], mass[1], mass[2])
+
+response_data = json.dumps(request_data.json(), sort_keys=True, indent=2)
+
+print(response_data)
