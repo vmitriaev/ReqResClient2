@@ -1,18 +1,4 @@
-def error_constructor(message):
-    '''Вывод сообщения об ошибке'''
-    errorMessage = ('ERROR: ' + message)
-    lines = '-' * len(errorMessage)
-    return '\n' + lines + '\n' + errorMessage + '\n' + lines + '\n'
-
-
-def counter(count):
-    '''Запоминает количество'''
-    return count
-
-
-def low_maker(text):
-    lower_text = str(text).lower()
-    return lower_text
+import requests, json
 
 
 def error_constructor(message):
@@ -22,35 +8,26 @@ def error_constructor(message):
     return '\n' + lines + '\n' + errorMessage + '\n' + lines + '\n'
 
 
-def service_switcher(service_value):
-    return {
-        '1': 'users',
-        '2': 'unknown',
-        '3': 'register',
-        '4': 'login'
-    }.get(service_value, error_constructor(choose_error + service_value.upper()))
+def request_constructor(method, endpoint, body):
+    if method == 'get':
+        request = requests.get(url=endpoint, data=body)
+        return request
+    elif method == 'post':
+        request = requests.post(url=endpoint, data=body)
+        return request
+    elif method == 'put':
+        request = requests.put(url=endpoint, data=body)
+        return request
+    elif method == 'patch':
+        request = requests.patch(url=endpoint, data=body)
+        return request
+    elif method == 'delete':
+        request = requests.delete(url=endpoint, data=body)
+        return request
+    else:
+        return error_constructor('WRONG METHOD')
 
 
-def method_switcher(method_value):
-    return {
-        '1': 'get',
-        '2': 'post',
-        '3': 'put',
-        '4': 'patch',
-        '5': 'delete'
-    }.get(method_value, error_constructor(choose_error + method_value.upper()))
-
-
-def users_get_param_switcher(users_get_param_value):
-    return {
-        '1': 'user_list',
-        '2': 'single_user',
-        '3': 'delayed_response'
-    }.get(users_get_param_value, error_constructor(choose_error + users_get_param_value.upper()))
-
-
-def unknown_get_param_switcher(unknown_get_param_value):
-    return {
-        '1': 'resource_list',
-        '2': 'resource_single'
-    }.get(unknown_get_param_value, error_constructor(choose_error + unknown_get_param_value.upper()))
+def response_json_constructor(request_data):
+    response_data = json.dumps(request_data.json(), sort_keys=True, indent=2)
+    return response_data
