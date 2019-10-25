@@ -1,10 +1,19 @@
-import requests
+import requests, json
 
 url = 'https://reqres.in/api/users'
+
+name = input('enter name: ')
+job = input('enter job: ')
+
 params = {
-    "name": "morpheus",
-    "job": "leader"
+    "name": name,
+    "job": job
 }
 
 response = requests.post(url, json=params)
-print(response.status_code, response.text)
+
+print(response.request)
+
+print('\nStatus: ' + str(response.status_code))
+
+print(json.dumps(response.json(), sort_keys=True, indent=2))
